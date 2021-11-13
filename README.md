@@ -1,0 +1,1 @@
+# osu! installer for linux
