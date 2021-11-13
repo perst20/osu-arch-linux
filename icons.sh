@@ -16,7 +16,7 @@ mkdir -p "$HOME/.local/share/icons/"
 cp ./icon.png "$HOME/.local/share/icons/osu.png"
 
 
-# fixme: try symlinks
+# todo: try symlinks
 printf """#!/usr/bin/env bash
 """ > "$HOME/.local/share/osu/xdg-open-osu.sh"
 printf "%q" "${SCRIPT_PATH}" >> "$HOME/.local/share/osu/xdg-open-osu.sh"
