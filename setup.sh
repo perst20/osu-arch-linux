@@ -58,6 +58,7 @@ export WINEPREFIX="$SCRIPT_PATH/prefix"
 export PATH="/opt/wine-osu/bin:${PATH}"
 mkdir ./prefix
 wineboot -u
+regedit disable-winemenubuilder.reg
 winetricks dotnet40
 winetricks meiryo
 mkdir -p "./prefix/drive_c/users/$USER/osu"
