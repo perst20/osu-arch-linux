@@ -43,15 +43,11 @@ fi
 #sudo pacman -U wine-osu-6.14-1-x86_64.pkg.tar.zst
 
 #configure pipewire
-# TODO: one file, wireplumber
-read -p "do you want to configure pipewire for better latency? <y/N> " prompt
+# TODO: wireplumber
+read -p "do you want to reconfigure pipewire for better latency? <y/N> " prompt
 if [[ "$prompt" =~ [yY](es)* ]]
 then
-  rm -rf ~/.config/pipewire
-  cp -rn /usr/share/pipewire ~/.config/pipewire
-
-  patch ~/.config/pipewire/pipewire-pulse.conf < ./pipewire-patches/pipewire-pulse.conf.patch
-  patch ~/.config/pipewire/media-session.d/alsa-monitor.conf < ./pipewire-patches/alsa-monitor.conf.patch
+  ./tinker-pipewire.sh
 fi
 
 #configure prefix
