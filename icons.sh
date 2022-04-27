@@ -17,14 +17,15 @@ mkdir -p "$HOME/.local/share/icons/"
 dimensions_arr=( $(ls ${SCRIPT_PATH}/icons | awk -F '-' '{print $3}' | awk -F '.' '{print $1}') )
 
 for dimensions in "${dimensions_arr[@]}"; do
+    mkdir -p "${HOME}/.local/share/icons/hicolor/${dimensions}/apps/"
     cp "./icons/osu-wine-${dimensions}.png" "${HOME}/.local/share/icons/hicolor/${dimensions}/apps/osu-wine.png" || WARN "Couldn't install $dimensions";
     chmod 644 "${HOME}/.local/share/icons/hicolor/${dimensions}/apps/osu-wine.png" || WARN "chmod icons failed";
 done
 
 
-ln -s "${HOME}/.local/share/osu/xdg-open-osu.sh" "${SCRIPT_PATH}/xdg-open-osu.sh"
+ln -s "${SCRIPT_PATH}/xdg-open-osu.sh" "${HOME}/.local/share/osu/xdg-open-osu.sh"
 
-ln -s "${HOME}/.local/share/osu/launch.sh" "${SCRIPT_PATH}/launch.sh"
+ln -s "${SCRIPT_PATH}/launch.sh" "${HOME}/.local/share/osu/launch.sh" 
 
 chmod +x "${HOME}/.local/share/osu/launch.sh" "${HOME}/.local/share/osu/xdg-open-osu.sh"
 
