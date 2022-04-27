@@ -23,9 +23,19 @@ for dimensions in "${dimensions_arr[@]}"; do
 done
 
 
-ln -s "${SCRIPT_PATH}/xdg-open-osu.sh" "${HOME}/.local/share/osu/xdg-open-osu.sh"
+printf """#!/usr/bin/env bash
+""" > "$HOME/.local/share/osu/xdg-open-osu.sh"
+printf "%q" "${SCRIPT_PATH}" >> "$HOME/.local/share/osu/xdg-open-osu.sh"
+printf """/xdg-open-osu.sh \"\$@\"
+""" >> "$HOME/.local/share/osu/xdg-open-osu.sh"
 
-ln -s "${SCRIPT_PATH}/launch.sh" "${HOME}/.local/share/osu/launch.sh" 
+printf """#!/usr/bin/env bash
+""" > "$HOME/.local/share/osu/launch.sh"
+printf "%q" "${SCRIPT_PATH}" >> "$HOME/.local/share/osu/launch.sh"
+printf """/launch.sh \"\$@\"
+""" >> "$HOME/.local/share/osu/launch.sh"
+
+chmod +x "$HOME/.local/share/osu/launch.sh" "$HOME/.local/share/osu/xdg-open-osu.sh"
 
 chmod +x "${HOME}/.local/share/osu/launch.sh" "${HOME}/.local/share/osu/xdg-open-osu.sh"
 
