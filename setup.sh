@@ -5,16 +5,17 @@ cd "$SCRIPT_PATH"
 
 #install wine
 
+# TODO: wine-osu filename
 if pacman -Qs wine-osu > /dev/null ; then
   read -p "wine-osu is already installed. Reinstall anyway? <y/N> " prompt
   if [[ "$prompt" =~ [yY](es)* ]]
   then
-    wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=19Oyi0sNRiPAFADYmPZqimSsNzmA_lqEO'
+    wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
     sudo pacman -U --noconfirm wine-osu-6.14-1-x86_64.pkg.tar.zst
   fi
 else
   echo "wine-osu is not installed"
-  wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=19Oyi0sNRiPAFADYmPZqimSsNzmA_lqEO'
+  wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
   sudo pacman -U --noconfirm wine-osu-6.14-1-x86_64.pkg.tar.zst
 fi
 
@@ -42,6 +43,7 @@ fi
 #sudo pacman -U wine-osu-6.14-1-x86_64.pkg.tar.zst
 
 #configure pipewire
+# TODO: one file, wireplumber
 read -p "do you want to configure pipewire for better latency? <y/N> " prompt
 if [[ "$prompt" =~ [yY](es)* ]]
 then
@@ -54,12 +56,12 @@ fi
 
 #configure prefix
 wget 'https://m1.ppy.sh/r/osu!install.exe'
-export WINEPREFIX="$SCRIPT_PATH/prefix"
+export WINEPREFIX="${SCRIPT_PATH}/prefix"
 export PATH="/opt/wine-osu/bin:${PATH}"
 mkdir ./prefix
 wineboot -u
 regedit disable-winemenubuilder.reg
-winetricks dotnet40
+winetricks dotnet48
 winetricks meiryo
 mkdir -p "./prefix/drive_c/users/$USER/osu"
 cp osu\!install.exe "./prefix/drive_c/users/$USER/osu/"
