@@ -5,7 +5,7 @@ cd "$SCRIPT_PATH"
 
 rm -rf "$HOME/.local/share/osu"
 
-dimensions_arr=( $(ls ${SCRIPT_PATH}/icons | awk -F '-' '{print $3}' | awk -F '.' '{print $1}') )
+dimensions_arr=( $(ls ./icons | awk -F '-' '{print $3}' | awk -F '.' '{print $1}') )
 
 for dimensions in "${dimensions_arr[@]}"; do
     rm "${HOME}/.local/share/icons/hicolor/${dimensions}/apps/osu-wine.png" || WARN "Couldn't remove $dimensions"
