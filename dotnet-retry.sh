@@ -6,4 +6,4 @@ cd "$SCRIPT_PATH"
 export WINEPREFIX="$SCRIPT_PATH/prefix"
 export PATH="/opt/wine-osu/bin:${PATH}"
 wineserver -k
-winetricks --force dotnet40
+winetricks --force dotnet48
