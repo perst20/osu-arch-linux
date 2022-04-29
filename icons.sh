@@ -14,7 +14,7 @@ mkdir "$HOME/.local/share/osu"
 
 mkdir -p "$HOME/.local/share/icons/"
 
-dimensions_arr=( $(ls ${SCRIPT_PATH}/icons | awk -F '-' '{print $3}' | awk -F '.' '{print $1}') )
+dimensions_arr=( $(ls ./icons | awk -F '-' '{print $3}' | awk -F '.' '{print $1}') )
 
 for dimensions in "${dimensions_arr[@]}"; do
     mkdir -p "${HOME}/.local/share/icons/hicolor/${dimensions}/apps/"
