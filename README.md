@@ -2,7 +2,7 @@
 This script installs osu! on your linux.
 
 ## Requirements
-- Arch linux (btw i already use one)
+- Arch-based distribution (btw i already use one)
 - Pipewire
 
 ## Installation
