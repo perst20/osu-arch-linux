@@ -13,8 +13,8 @@ This script installs osu! on your linux.
 ## Uninstall
 Run ./uninstall.sh in terminal 
 
-## Tinkering PipeWire for better lattency
-By default script sets optimal lattency settings.
+## Tinkering PipeWire for better latency
+By default script sets optimal latency settings.
 
 ### If you use usb dac
 ...
