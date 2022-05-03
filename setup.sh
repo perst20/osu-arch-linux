@@ -3,9 +3,7 @@
 SCRIPT_PATH=$(dirname "$(realpath -s "$0")")
 cd "$SCRIPT_PATH"
 
-#install wine
-
-# TODO: wine-osu filename
+# install wine
 if pacman -Qs wine-osu > /dev/null ; then
   read -p "wine-osu is already installed. Reinstall anyway? <y/N> " prompt
   if [[ "$prompt" =~ [yY](es)* ]]
