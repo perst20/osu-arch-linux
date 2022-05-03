@@ -10,13 +10,13 @@ if pacman -Qs wine-osu > /dev/null ; then
   read -p "wine-osu is already installed. Reinstall anyway? <y/N> " prompt
   if [[ "$prompt" =~ [yY](es)* ]]
   then
-    wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
-    sudo pacman -U --noconfirm wine-osu-6.14-1-x86_64.pkg.tar.zst
+    wget -O 'wine-osu.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
+    sudo pacman -U --noconfirm wine-osu.pkg.tar.zst
   fi
 else
   echo "wine-osu is not installed"
-  wget -O 'wine-osu-6.14-1-x86_64.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
-  sudo pacman -U --noconfirm wine-osu-6.14-1-x86_64.pkg.tar.zst
+  wget -O 'wine-osu.pkg.tar.zst' 'https://drive.google.com/uc?export=download&id=1xgJIe18ccBx6yjPcmBxDbTnS1XxwrAcc'
+  sudo pacman -U --noconfirm wine-osu.pkg.tar.zst
 fi
 
 if pacman -Qs gamemode > /dev/null ; then
@@ -40,17 +40,14 @@ else
   sudo pacman -S --noconfirm winetricks
 fi
 
-#sudo pacman -U wine-osu-6.14-1-x86_64.pkg.tar.zst
-
-#configure pipewire
-# TODO: wireplumber
+# configure pipewire
 read -p "do you want to reconfigure pipewire for better latency? <y/N> " prompt
 if [[ "$prompt" =~ [yY](es)* ]]
 then
   ./tinker-pipewire.sh
 fi
 
-#configure prefix
+# configure prefix
 wget 'https://m1.ppy.sh/r/osu!install.exe'
 export WINEPREFIX="${SCRIPT_PATH}/prefix"
 export PATH="/opt/wine-osu/bin:${PATH}"
@@ -64,7 +61,7 @@ cp osu\!install.exe "./prefix/drive_c/users/$USER/osu/"
 cd "./prefix/drive_c/users/$USER/osu"
 wine osu\!install.exe
 
-#setup icons
+# setup icons
 cd "$SCRIPT_PATH"
 
 ./icons.sh
